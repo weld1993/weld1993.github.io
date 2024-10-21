@@ -9,8 +9,8 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('11732.jpg') no-repeat center center fixed; /* Use the uploaded image as background */
-            background-size: cover; /* Make sure the image covers the entire background */
+            background: url('11732.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
         .container {
             display: flex;
@@ -21,10 +21,10 @@
         .sidebar, .form-box {
             width: 30%;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.85); /* Slight transparency */
+            background-color: rgba(255, 255, 255, 0.85);
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            color: #333; /* Dark grey text */
+            color: #333;
         }
         .sidebar {
             width: 30%;
@@ -38,17 +38,17 @@
         .sidebar h1 {
             font-size: 24px;
             margin: 10px 0;
-            color: #004080; /* Dark blue for the name */
+            color: #004080;
         }
         .sidebar p {
             margin: 5px 0;
-            color: #333; /* Dark grey text */
+            color: #333;
         }
         .sidebar a {
             display: inline-block;
             text-decoration: none;
             color: white;
-            background-color: #004080; /* Dark blue for buttons */
+            background-color: #004080;
             padding: 10px;
             border-radius: 5px;
             margin-top: 10px;
@@ -59,12 +59,12 @@
         }
         .form-box {
             width: 70%;
-            background-color: rgba(255, 255, 255, 0.85); /* Slight transparency for the form */
+            background-color: rgba(255, 255, 255, 0.85);
         }
         .form-box h2 {
             font-size: 22px;
             margin-bottom: 15px;
-            color: #004080; /* Dark blue for headers */
+            color: #004080;
         }
         .form-box input[type="text"], 
         .form-box input[type="email"], 
@@ -76,17 +76,17 @@
             border-radius: 5px;
         }
         .form-box input::placeholder {
-            color: #555; /* Darker grey placeholders */
+            color: #555;
         }
         .add-referral {
             margin-top: 20px;
-            color: #004080; /* Dark blue for links */
+            color: #004080;
             cursor: pointer;
             text-decoration: underline;
             text-align: right;
         }
         .submit-btn {
-            background-color: #004080; /* Dark blue for submit button */
+            background-color: #004080;
             color: white;
             border: none;
             padding: 5px 15px;
@@ -98,7 +98,6 @@
         function addReferral() {
             const referralContainer = document.getElementById('referral-container');
 
-            // Create new referral fields
             const newReferral = document.createElement('div');
             newReferral.classList.add('referral');
 
@@ -109,7 +108,6 @@
                 <input type="tel" name="refPhone" placeholder="Phone" required>
             `;
 
-            // Append new fields to the container
             referralContainer.appendChild(newReferral);
         }
     </script>
@@ -129,7 +127,8 @@
     <div class="main-content">
         <div class="form-box">
             <h2>Your Info</h2>
-            <form action="#" method="POST">
+            <!-- Form submission now points to the Zapier webhook -->
+            <form action="https://hooks.zapier.com/hooks/catch/20374223/21xtvqt/" method="POST">
                 <input type="text" name="firstName" placeholder="Your First Name" required>
                 <input type="text" name="lastName" placeholder="Your Last Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
@@ -139,7 +138,6 @@
                 <p>My business thrives on referrals from satisfied clients like you—whether they're friends, family, or coworkers. Do you know anyone who might benefit from better insurance coverage? As a thank you, you’ll receive a $15 gift card. Your referral will help me continue to offer personalized service, and I’d love to help others in your circle find the right plan.</p>
                 
                 <div id="referral-container">
-                    <!-- Initial referral inputs -->
                     <input type="text" name="refFirstName" placeholder="First Name" required>
                     <input type="text" name="refLastName" placeholder="Last Name" required>
                     <input type="email" name="refEmail" placeholder="Email" required>
