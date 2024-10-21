@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referral Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('11732.jpg') no-repeat center center fixed; /* Use the uploaded image as background */
+            background-size: cover; /* Make sure the image covers the entire background */
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .sidebar, .form-box {
+            width: 30%;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.85); /* Slight transparency */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            color: #333; /* Dark grey text */
+        }
+        .sidebar {
+            width: 30%;
+            margin-right: 20px;
+            text-align: center;
+        }
+        .sidebar img {
+            border-radius: 50%;
+            width: 120px;
+        }
+        .sidebar h1 {
+            font-size: 24px;
+            margin: 10px 0;
+            color: #004080; /* Dark blue for the name */
+        }
+        .sidebar p {
+            margin: 5px 0;
+            color: #333; /* Dark grey text */
+        }
+        .sidebar a {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #004080; /* Dark blue for buttons */
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .main-content {
+            width: 70%;
+            margin-left: 20px;
+        }
+        .form-box {
+            width: 70%;
+            background-color: rgba(255, 255, 255, 0.85); /* Slight transparency for the form */
+        }
+        .form-box h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #004080; /* Dark blue for headers */
+        }
+        .form-box input[type="text"], 
+        .form-box input[type="email"], 
+        .form-box input[type="tel"] {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-box input::placeholder {
+            color: #555; /* Darker grey placeholders */
+        }
+        .add-referral {
+            margin-top: 20px;
+            color: #004080; /* Dark blue for links */
+            cursor: pointer;
+            text-decoration: underline;
+            text-align: right;
+        }
+        .submit-btn {
+            background-color: #004080; /* Dark blue for submit button */
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function addReferral() {
+            const referralContainer = document.getElementById('referral-container');
+
+            // Create new referral fields
+            const newReferral = document.createElement('div');
+            newReferral.classList.add('referral');
+
+            newReferral.innerHTML = `
+                <input type="text" name="refFirstName" placeholder="First Name" required>
+                <input type="text" name="refLastName" placeholder="Last Name" required>
+                <input type="email" name="refEmail" placeholder="Email" required>
+                <input type="tel" name="refPhone" placeholder="Phone" required>
+            `;
+
+            // Append new fields to the container
+            referralContainer.appendChild(newReferral);
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <div class="sidebar">
+        <img src="Headshot1.jpg" alt="Tim Spurlin">
+        <h1>Tim Spurlin</h1>
+        <p>Saphyre Solutions</p>
+        <a href="tel:7019410811">📞 (701) 941-0811</a>
+        <br>
+        <a href="mailto:tim.spurlin@saphyresolutions.com">✉️ tim.spurlin@saphyresolutions.com</a>
+    </div>
+
+    <div class="main-content">
+        <div class="form-box">
+            <h2>Your Info</h2>
+            <form action="#" method="POST">
+                <input type="text" name="firstName" placeholder="Your First Name" required>
+                <input type="text" name="lastName" placeholder="Your Last Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="tel" name="phoneNumber" placeholder="Your Phone Number" required>
+
+                <h2>Refer Your Friends or Family Members</h2>
+                <p>My business thrives on referrals from satisfied clients like you—whether they're friends, family, or coworkers. Do you know anyone who might benefit from better insurance coverage? As a thank you, you’ll receive a $15 gift card. Your referral will help me continue to offer personalized service, and I’d love to help others in your circle find the right plan.</p>
+                
+                <div id="referral-container">
+                    <!-- Initial referral inputs -->
+                    <input type="text" name="refFirstName" placeholder="First Name" required>
+                    <input type="text" name="refLastName" placeholder="Last Name" required>
+                    <input type="email" name="refEmail" placeholder="Email" required>
+                    <input type="tel" name="refPhone" placeholder="Phone" required>
+                </div>
+
+                <div class="add-referral" onclick="addReferral()">+ Add another referral</div>
+
+                <button class="submit-btn" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
