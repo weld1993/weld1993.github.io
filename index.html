@@ -95,10 +95,9 @@
         }
     </style>
     <script>
-        // Function to add a referral form dynamically
+        // Function to add a referral dynamically
         function addReferral() {
             const referralContainer = document.getElementById('referral-container');
-
             const newReferral = document.createElement('div');
             newReferral.classList.add('referral');
 
@@ -112,30 +111,31 @@
             referralContainer.appendChild(newReferral);
         }
 
-        // JavaScript to handle form submission and redirect
+        // Handle form submission with JavaScript
         document.addEventListener("DOMContentLoaded", function() {
-            document.querySelector("form").addEventListener("submit", function(event) {
-                event.preventDefault(); // Prevent default form submission behavior
+            const form = document.querySelector("form");
+            form.addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent default form submission
 
-                // Gather form data
-                const formData = new FormData(this);
+                // Collect form data
+                const formData = new FormData(form);
                 const jsonData = {};
                 formData.forEach((value, key) => {
                     jsonData[key] = value;
                 });
 
-                // Send data to Zapier webhook
+                // Submit form data to Zapier webhook
                 fetch("https://hooks.zapier.com/hooks/catch/20374223/21xtvqt/", {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
                     },
-                    body: JSON.stringify(jsonData)
+                    body: JSON.stringify(jsonData),
                 })
                 .then(response => response.json())
                 .then(data => {
                     if (data.status === "success") {
-                        // Redirect to Saphyre Solutions website after successful submission
+                        // Redirect to the desired URL on success
                         window.location.href = "https://www.saphyresolutions.com";
                     } else {
                         alert("There was an issue with the submission. Please try again.");
@@ -164,7 +164,7 @@
     <div class="main-content">
         <div class="form-box">
             <h2>Your Info</h2>
-            <!-- Form submission is handled by JavaScript now -->
+            <!-- Form submission is now handled by JavaScript -->
             <form>
                 <input type="text" name="firstName" placeholder="Your First Name" required>
                 <input type="text" name="lastName" placeholder="Your Last Name" required>
