@@ -95,7 +95,6 @@
         }
     </style>
     <script>
-        // Function to add a referral dynamically
         function addReferral() {
             const referralContainer = document.getElementById('referral-container');
             const newReferral = document.createElement('div');
@@ -107,46 +106,13 @@
                 <input type="email" name="refEmail" placeholder="Email" required>
                 <input type="tel" name="refPhone" placeholder="Phone" required>
             `;
-
             referralContainer.appendChild(newReferral);
         }
 
-        // Handle form submission with JavaScript
-        document.addEventListener("DOMContentLoaded", function() {
-            const form = document.querySelector("form");
-            form.addEventListener("submit", function(event) {
-                event.preventDefault(); // Prevent default form submission
-
-                // Collect form data
-                const formData = new FormData(form);
-                const jsonData = {};
-                formData.forEach((value, key) => {
-                    jsonData[key] = value;
-                });
-
-                // Submit form data to Zapier webhook
-                fetch("https://hooks.zapier.com/hooks/catch/20374223/21xtvqt/", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(jsonData),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === "success") {
-                        // Redirect to the desired URL on success
-                        window.location.href = "https://www.saphyresolutions.com";
-                    } else {
-                        alert("There was an issue with the submission. Please try again.");
-                    }
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                    alert("An error occurred. Please try again later.");
-                });
-            });
-        });
+        // Redirect after form submission
+        function handleRedirect() {
+            window.location.href = "https://www.saphyresolutions.com";
+        }
     </script>
 </head>
 <body>
@@ -164,8 +130,8 @@
     <div class="main-content">
         <div class="form-box">
             <h2>Your Info</h2>
-            <!-- Form submission is now handled by JavaScript -->
-            <form>
+            <!-- Direct form submission to Zapier webhook -->
+            <form action="https://hooks.zapier.com/hooks/catch/20374223/21xtvqt/" method="POST" target="dummyframe" onsubmit="handleRedirect()">
                 <input type="text" name="firstName" placeholder="Your First Name" required>
                 <input type="text" name="lastName" placeholder="Your Last Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
@@ -185,6 +151,9 @@
 
                 <button class="submit-btn" type="submit">Submit</button>
             </form>
+
+            <!-- Hidden iframe to allow redirection after form submission -->
+            <iframe id="dummyframe" name="dummyframe" style="display:none;"></iframe>
         </div>
     </div>
 </div>
