@@ -64,18 +64,26 @@
             margin-bottom: 15px;
             color: #004080;
         }
+        
+        /* Paragraph Centering */
+        .form-box p {
+            text-align: center; /* Center only the paragraph */
+        }
+
         .form-box input[type="text"], 
         .form-box input[type="email"], 
         .form-box input[type="tel"] {
+            display: block;
             width: 95%; /* Reduced width to fit within frame */
+            margin: 10px auto; /* Center the input boxes */
             padding: 12px;
-            margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
             box-sizing: border-box; /* Makes the width include padding */
         }
         .form-box input::placeholder {
+            text-align: left; /* Placeholder alignment remains left */
             color: #555;
         }
         .add-referral {
