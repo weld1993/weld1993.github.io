@@ -95,6 +95,7 @@
         }
     </style>
     <script>
+        // Function to add a referral form dynamically
         function addReferral() {
             const referralContainer = document.getElementById('referral-container');
 
@@ -110,6 +111,42 @@
 
             referralContainer.appendChild(newReferral);
         }
+
+        // JavaScript to handle form submission and redirect
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector("form").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent default form submission behavior
+
+                // Gather form data
+                const formData = new FormData(this);
+                const jsonData = {};
+                formData.forEach((value, key) => {
+                    jsonData[key] = value;
+                });
+
+                // Send data to Zapier webhook
+                fetch("https://hooks.zapier.com/hooks/catch/20374223/21xtvqt/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(jsonData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        // Redirect to Saphyre Solutions website after successful submission
+                        window.location.href = "https://www.saphyresolutions.com";
+                    } else {
+                        alert("There was an issue with the submission. Please try again.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("An error occurred. Please try again later.");
+                });
+            });
+        });
     </script>
 </head>
 <body>
@@ -127,8 +164,8 @@
     <div class="main-content">
         <div class="form-box">
             <h2>Your Info</h2>
-            <!-- Form submission now points to the Zapier webhook -->
-            <form action="https://hooks.zapier.com/hooks/catch/20374223/21xtvqt/" method="POST">
+            <!-- Form submission is handled by JavaScript now -->
+            <form>
                 <input type="text" name="firstName" placeholder="Your First Name" required>
                 <input type="text" name="lastName" placeholder="Your Last Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
