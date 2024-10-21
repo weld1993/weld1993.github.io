@@ -11,6 +11,7 @@
             padding: 0;
             background: url('11732.jpg') no-repeat center center fixed;
             background-size: cover;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
         .container {
             display: flex;
@@ -19,6 +20,7 @@
             align-items: flex-start;
             padding: 20px;
             flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            max-width: 100%;
         }
         .sidebar, .form-box {
             background-color: rgba(255, 255, 255, 0.85);
@@ -29,6 +31,7 @@
             padding: 20px;
             width: 100%;
             max-width: 600px;
+            box-sizing: border-box; /* Ensures padding doesn't cause overflow */
         }
         .sidebar {
             text-align: center;
