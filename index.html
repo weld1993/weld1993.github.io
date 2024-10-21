@@ -95,11 +95,11 @@
         }
     </style>
     <script>
+        // Function to add additional referral fields
         function addReferral() {
             const referralContainer = document.getElementById('referral-container');
             const newReferral = document.createElement('div');
             newReferral.classList.add('referral');
-
             newReferral.innerHTML = `
                 <input type="text" name="refFirstName" placeholder="First Name" required>
                 <input type="text" name="refLastName" placeholder="Last Name" required>
@@ -111,7 +111,9 @@
 
         // Redirect after form submission
         function handleRedirect() {
-            window.location.href = "https://www.saphyresolutions.com";
+            setTimeout(function() {
+                window.location.href = "https://www.saphyresolutions.com";
+            }, 2000);  // Redirect after 2 seconds
         }
     </script>
 </head>
